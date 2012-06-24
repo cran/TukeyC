@@ -1,7 +1,7 @@
 46aaf69a91703493b666f212a04f2d8d *COPYING
-31fd726926182b1af9d7cd6693e3b69a *COPYRIGHTS
-a739cbb810e81c9b5a7ce0f99c99ca0f *ChangeLog
-429ea29f25f5e7f7407f2da906436cca *DESCRIPTION
+a531d43b661a04071475cb74159dfacd *COPYRIGHTS
+2d79804bdbebd4d70ef767f106d1991f *ChangeLog
+adc9e5ab67400f51944a716921fb6f22 *DESCRIPTION
 9fdfeb11f7ddba6f3aab9aaa6b1ac5dd *NAMESPACE
 d6e289e591788c23072e183f0bebd7dc *R/TukeyC.R
 2ce1a59a4763c3cdc161a7495313852b *R/TukeyC.aov.R
@@ -15,6 +15,7 @@ e3e3c0fc871d8d3bc89cb031f3fc4e82 *R/TukeyC.nest.default.R
 d129326570d2bdc0bb7892407faea015 *R/make.TukeyC.test.R
 67bcb60bb4a450b04251259ce2ebba8a *R/plot.TukeyC.R
 b52201b8f79c72a6adcaa3dc29132762 *R/summary.TukeyC.R
+9c36cc5d596a58a34ef75a14635298c8 *README
 9213fa14299a6e5206efac31a84bc7ad *data/CRD1.rda
 f2b597687edffb4b74182cf26a37bd34 *data/CRD2.rda
 a20348057665bf299a965486dab10788 *data/FE.rda
@@ -37,11 +38,11 @@ cd1cf4f1c4fa5a1744716c04b9f54102 *man/LS.Rd
 eefa6f6d60126e984a85c7f13085f57e *man/RCBD.Rd
 0b9c4cf52acce97f6c14299ae3a02eea *man/SPE.Rd
 c392ff3988a066f83c6c49ed70e1f9cb *man/SSPE.Rd
-fb768fcd2fff4738a503a13a5e291a85 *man/TukeyC-package.Rd
-65b9ffd9138a9984d2576832329e2ae7 *man/TukeyC.Rd
-5797148420af2bbb778e5d5c09c93396 *man/TukeyC.nest.Rd
+7b174c7d66f60a096e353920dcb77e50 *man/TukeyC-package.Rd
+b1d4e8456b27fc41f8b62f9ca99bda2c *man/TukeyC.Rd
+e93f341f2306d9ac0d39b8a900405151 *man/TukeyC.nest.Rd
 6b61f0901ff9f84c528916c4b88788c0 *man/make.TukeyC.groups.Rd
 c4b442234652a5f0d6708c913714f7fa *man/make.TukeyC.test.Rd
 9d77052adad87ec5a54c23dfb7ca2f3c *man/plot.TukeyC.Rd
-20900648b782f3a73fcb8a77c4374f2a *man/sorghum.Rd
-7e0bd47fcf0fb8b2e70c0bf75ca2ded7 *man/summary.Rd
+b73298c8c16583deffcfcfbe3158755d *man/sorghum.Rd
+68defa146fd4abdc48682f6a270ab394 *man/summary.Rd
