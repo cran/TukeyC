@@ -24,7 +24,8 @@ tk1u <- with(CRD1,
              TukeyC(x=x[-1],
                     y=y[-1],
                     model='y ~ x',
-                    which='x'))
+                    which='x',
+                    dispersion='s'))
 tk1u
 summary(tk1u)
 plot(tk1u)
@@ -34,7 +35,8 @@ tk2 <- with(CRD1,
             TukeyC(x=dm,
                    y=y,
                    model='y ~ x',
-                   which='x'))
+                   which='x',
+                   dispersion='se'))
 tk2
 summary(tk2)
 
@@ -158,9 +160,8 @@ av2 <- with(CRD2,
                 data=dfm))
 summary(av2)
 
-tk8 <- with(CRD2,
-            TukeyC(x=av2,
-                   which='x'))
+tk8 <- TukeyC(x=av2,
+              which='x')
 tk8
 summary(tk8)
 
@@ -170,9 +171,8 @@ av2u <- with(CRD2,
                  data=dfm[-1,]))
 summary(av2u)
 
-tk8u <- with(CRD2,
-             TukeyC(x=av2u,
-                    which='x'))
+tk8u <- TukeyC(x=av2u,
+               which='x')
 tk8u
 summary(tk8u)
 plot(tk8u,
