@@ -1,6 +1,6 @@
 46aaf69a91703493b666f212a04f2d8d *COPYING
-18b5ec1bc5dc7aee4c74ff21ee697572 *ChangeLog
-20e8add120c2dc6ab54b4605376c345f *DESCRIPTION
+025efbab87c6bfc141fbfee2ad19d3a5 *ChangeLog
+0898bfb830177afb7f7ecc1740afd7e0 *DESCRIPTION
 9fdfeb11f7ddba6f3aab9aaa6b1ac5dd *NAMESPACE
 d6e289e591788c23072e183f0bebd7dc *R/TukeyC.R
 4e4dc69986c2111384b3e20b32ca1bc2 *R/TukeyC.aov.R
@@ -10,6 +10,7 @@ d93a2ee1743d1621246557b9b9af98bb *R/TukeyC.nest.R
 1173f86c8a5e7b9bf816d3099292b074 *R/TukeyC.nest.aov.R
 4d84aafbe79abb277e493c273e86e24d *R/TukeyC.nest.aovlist.R
 eeda5241024d77c8feca479559f4c853 *R/TukeyC.nest.default.R
+544d6a4770a58cdce379146dd997c519 *R/cv.R
 33e648a220f9fe2ecdcd80dde3d242c1 *R/m.inf.1a.R
 3a7241953fabe684a53ef54f8f1012db *R/m.inf.1b.R
 cba768149fef08d72c5e39040bc8aae6 *R/m.inf.2a.R
@@ -29,7 +30,7 @@ ef148db2b1e22c07b03da5e004f89163 *data/SPE.rda
 0b46020a56fb63f3f7a3d7ca86082a68 *data/SPET.rda
 829a0e45ccff4783f0cbcf5fc84765a0 *data/SSPE.rda
 1eb7ddf7831490ae0baa3096f8c07117 *data/sorghum.rda
-a133fac81f7b11de3075815be3b7018b *demo/00Index
+a0f4a957b8590b810cff7dbc89e23760 *demo/00Index
 1f60365e0cd682aebadb98727cd87557 *demo/CRD.R
 8f13746af96792c70dbd3193c2a03803 *demo/FE.R
 68b2bdb8614e6724f701039e2751b6b1 *demo/LSD.R
@@ -37,7 +38,7 @@ f3ae5d8379cce1f62feee03922409fae *demo/RCBD.R
 80851f6be5c6e2c78831633cf002fdef *demo/SPE.r
 aacf6dd779b24b402fb0fb50a8738aa7 *demo/SPET.r
 30241d04ce6cdb8abda6b3dbfb907b6d *demo/SSPE.r
-abfb507ba2d4109d3d7e433115d98028 *inst/CITATION
+bdb0ea74768da07e1212283bf6d4b6fc *inst/CITATION
 a531d43b661a04071475cb74159dfacd *inst/COPYRIGHTS
 886eb4ae1a70a17d4fd83c62c0f3e1a9 *man/CRD1.Rd
 eb46c87be424ae24d9bd0cc138069a3d *man/CRD2.Rd
@@ -50,6 +51,7 @@ eb46c87be424ae24d9bd0cc138069a3d *man/CRD2.Rd
 9c7c4b169c9a83f24e853cff396f33c2 *man/TukeyC-package.Rd
 5081446a8a297dc4d93fc84f05fd300d *man/TukeyC.Rd
 2db16c5d835fe23e46159f3a21873aac *man/TukeyC.nest.Rd
+127820da4f801a1c2e90ed0cf1f2b03d *man/cv.Rd
 7897182da31cac49e9780724cde9fe3b *man/m.inf.Rd
 99befe369c4b2016fa5931c280d558bd *man/make.TukeyC.groups.Rd
 2e972fea037fe13e9bb04a3c13e89b92 *man/make.TukeyC.test.Rd
