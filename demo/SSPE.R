@@ -36,7 +36,10 @@ tk3 <- with(SSPE,
                    which='P:SSP',
                    fl1=2))
 summary(tk3)
-plot(tk3)
+plot(tk3,
+     di='sd',
+     d.col='red',
+     d.lty=3)
 
 
 ## From: lm
@@ -149,8 +152,8 @@ summary(tk17)
 ## Nested: ssp1/sp1/P
 ## It is necessary to inform the appropriate error for the test
 tk18 <- TukeyC(av1,
-                which='SSP:SP:P',
-                error='Within/blk:P:SP/blk:P',
-                fl1=1,
-                fl2=1)
+               which='SSP:SP:P',
+               error='Within/blk:P:SP/blk:P',
+               fl1=1,
+               fl2=1)
 summary(tk18)

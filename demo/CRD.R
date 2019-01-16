@@ -14,14 +14,26 @@ tk1 <- with(CRD1,
                    dfm))
 tk1
 summary(tk1)
+
 plot(tk1)
 
+plot(tk1,
+     di='mm',
+     d.lty=3)
+
+plot(tk1,
+     di='sd')
+
+plot(tk1,
+     di='ci',
+     d.col='red')
+
 ## From: formula - unbalanced
-utk1 <- with(CRD1,
-             TukeyC(y ~ x,
-                    dfm[-1,]))
-utk1
-summary(utk1)
+u_tk1 <- with(CRD1,
+              TukeyC(y ~ x,
+                     dfm[-1,]))
+u_tk1
+summary(u_tk1)
 
 ## From: aov - balanced
 av1 <- with(CRD1,
@@ -34,14 +46,14 @@ tk2
 summary(tk2)
 
 ## From: lm - unbalanced
-ulm1 <- with(CRD1,
-             lm(y ~ x,
-                data=dfm[-1,]))
-summary(ulm1)
+u_lm1 <- with(CRD1,
+              lm(y ~ x,
+                 data=dfm[-1,]))
+summary(u_lm1)
 
-utk2 <- TukeyC(ulm1)
-utk2
-summary(utk2)
+u_tk2 <- TukeyC(u_lm1)
+u_tk2
+summary(u_tk2)
 
 ## Example 2: a lot of groups
 data(CRD2)
@@ -52,15 +64,21 @@ tk3 <- with(CRD2,
                    dfm))
 plot(tk3,
      id.las=2,
-     rl=FALSE)
+     yl=FALSE,
+     di='sd',
+     d.lty=3,
+     d.col='red')
 
 ## From: data.frame (dfm) - unbalanced
-utk3 <- with(CRD2,
-             TukeyC(y ~ x,
-                    dfm[-1,]))
-plot(utk3,
+u_tk3 <- with(CRD2,
+              TukeyC(y ~ x,
+                     dfm[-1,]))
+plot(u_tk3,
      id.las=2,
-     rl=FALSE)
+     yl=FALSE,
+     di='sd',
+     d.lty=3,
+     d.col='red')
 
 ## From: aov - balanced
 av2 <- with(CRD2,
@@ -71,16 +89,19 @@ summary(av2)
 tk4 <- TukeyC(av2)
 plot(tk4,
      id.las=2,
-     rl=FALSE)
+     yl=FALSE,
+     di='sd',
+     d.lty=4,
+     d.col='darkgreen')
 
 ## From: lm - unbalanced
-ulm2 <- with(CRD2,
-             lm(y ~ x,
-                data=dfm[-1,]))
-summary(ulm2)
+u_lm2 <- with(CRD2,
+              lm(y ~ x,
+                 data=dfm[-1,]))
+summary(u_lm2)
 
-utk8 <- TukeyC(ulm2)
+u_tk8 <- TukeyC(u_lm2)
 
-plot(utk8,
+plot(u_tk8,
      id.las=2,
-     rl=FALSE)
+     yl=FALSE)

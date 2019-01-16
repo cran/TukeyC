@@ -13,15 +13,16 @@ plot.TukeyC <- function(x,
                         ylim       = NULL,
                         id.lab     = NULL,
                         id.las     = 1,
-                        rl         = TRUE,
-                        rl.lty     = 3,
-                        rl.col     = 'gray',
+                        yl         = TRUE,
+                        yl.lty     = 3,
+                        yl.col     = 'gray',
                         dispersion = c('none',
                                        'mm',
                                        'sd',
                                        'ci',
                                        'cip'),
-                        dispersion.lty = 1,
+                        d.lty      = 1,
+                        d.col      = 'black',
                         title      = '', ...)
 {
   fun <- function(m) {
@@ -54,10 +55,10 @@ plot.TukeyC <- function(x,
                          paste,
                          collapse=''))
   }
-  else
+  else{
     id.groups <- m.res 
+  }
 
-  #minmax <- x$Means[, 2:3]
   minmax1 <- x$info$mm[['min']]
   minmax2 <- x$info$mm[['max']]
   minmax <- data.frame(minmax1,
@@ -112,54 +113,47 @@ plot.TukeyC <- function(x,
        ylim = ylim,
        axes = FALSE, ...)
 
-  if(rl == TRUE)       
+  if(yl == TRUE)
     segments(rep(-0.5,
                  length(means)),
              means,
              groups,
              means,
-             lty = rl.lty,
-             col = rl.col, ...) 
+             lty = yl.lty,
+             col = yl.col, ...)
 
-  #   if(mm == TRUE)
-  #     segments(groups,
-  #              minmax[, 2],
-  #              groups,
-  #              minmax[, 1],
-  #              lty=mm.lty,
-  #              col=col, ...)
   switch(match.arg(dispersion),
          mm = {
            segments(groups,
                     minmax[,1],
                     groups,
                     minmax[,2],
-                    lty = dispersion.lty,
-                    col = col, ...)         
+                    lty = d.lty,
+                    col = d.col, ...)
          },
          sd = {
            segments(groups,
                     sdd[,1],
                     groups,
                     sdd[,2],
-                    lty = dispersion.lty,
-                    col = col, ...)          
+                    lty = d.lty,
+                    col = d.col, ...)
          },
          ci = {
            segments(groups,
                     ic[,1],
                     groups,
                     ic[,2],
-                    lty = dispersion.lty,
-                    col = col, ...)           
+                    lty = d.lty,
+                    col = d.col, ...)
          },
          cip = {
            segments(groups,
                     icp[,1],
                     groups,
                     icp[,2],
-                    lty = dispersion.lty,
-                    col = col, ...)            
+                    lty = d.lty,
+                    col = d.col, ...)
          },
          none = NULL)
 
@@ -198,6 +192,7 @@ plot.TukeyC <- function(x,
   title(title, ...)
 
   # By J.C.Faria
-  if(ngroups > 3)
+  if(ngroups > 3){
     par(mar=op)  # Restoring the original par('mar')
+  }
 }
