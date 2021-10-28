@@ -79,7 +79,7 @@ TukeyC.lm <- function(x,
 
       levelss <- unlist(aux_levels1[factors])
 
-      if(length(levelss) == 2){
+      if(length(aux_MSE) == 2){
 
         cp <- c(levelss[1]-1,
                 1) 
@@ -163,9 +163,9 @@ TukeyC.lm <- function(x,
                      function(x) r = length(x))
   reps <- aux_r[[my]]
 
-  aux_mt <- suppressWarnings(LSmeans(x,
-                                     effect = which,
-                                     level = 1 - sig.level))
+  aux_mt <- suppressWarnings(doBy::LSmeans(x,
+                                           effect = which,
+                                           level = 1 - sig.level))
 
   aux_mt1 <- aux_mt$coef[,1]
 

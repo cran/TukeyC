@@ -1,8 +1,17 @@
+# Export
 export(TukeyC)
+export(plot.TukeyC)
+export(print.TukeyC)
+export(summary.TukeyC)
+export(boxplot.TukeyC)
 export(cv)
+export(xtable.TukeyC)
 
+# Import all packages listed as Imports or Depends
+importFrom(doBy, LSmeans)
+#importFrom(xtable, print.xtable)
+importFrom(xtable, xtable)
 import(
- doBy,
  utils,
  stats,
  graphics
@@ -18,5 +27,6 @@ S3method(TukeyC, nest.aovlist)
 S3method(TukeyC, nest.lmerMod)
 S3method(summary, TukeyC)
 S3method(print, TukeyC)
+S3method(xtable,TukeyC)
 S3method(plot, TukeyC)
 S3method(boxplot, TukeyC)
