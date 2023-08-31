@@ -17,7 +17,7 @@ TukeyC.lmerMod <- function(x,
   # Interacoes com erro experimental
   if(!is.null(fl1) & is.null(error)){
 
-    MSE <- sigma(x)^2 # possível solução
+    MSE <- sigma(x)^2 # possivel solucao
     dfr <- df.residual(x)
 
     cl <- match.call()

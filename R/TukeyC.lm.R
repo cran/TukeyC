@@ -136,7 +136,7 @@ TukeyC.lm <- function(x,
 
   }
 
-  # Aqui não ha interesse em interacoes!!!!
+  # Aqui nao ha interesse em interacoes!!!!
   if(is.null(fl1) & !is.null(error)){#Um erro de interesse do usuario
 
     anov <- anova(x)

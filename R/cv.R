@@ -1,6 +1,6 @@
 #===============================================================================
 # Name           : cv
-# Author(s)      : José Cláudio Faria/UESC/DCET
+# Author(s)      : Jose Claudio Faria/UESC/DCET
 #                  Walmes Marques Zeviani UFPR/DE
 # Date           : 2014/08/16 - 09:24:11
 # Version        : v7
