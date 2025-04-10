@@ -32,6 +32,10 @@
   \item{\dots}{Optional plotting parameters.}
 }
 
+\value{
+ `NULL` (invisibly). The main purpose of this function is to produce a plot.
+}
+
 \details{
   The \code{boxplot.TukeyC} function is a S3 method to plot \samp{TukeyC} objetcs. The difference to generic function is the Tukey inference under frame and the plot of means within box.
 }

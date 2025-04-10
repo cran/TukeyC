@@ -132,7 +132,7 @@ summary(tk1)
 
 ## From: merMod
 ## This class is specific of the lme4 package.
-\dontrun{
+\donttest{
   if(require(lme4)){
     lmer1 <- with(RCBD,
                   lmer(y ~ (1|blk) + tra,
@@ -223,7 +223,7 @@ n_tk3 <- with(FE,
 summary(n_tk3) 
 
 # From: merMod
-\dontrun{
+\donttest{
   if(require(lme4)){
     lmer2 <- with(FE,
                   lmer(y ~ (1|blk) + N*P*K,
@@ -265,7 +265,7 @@ summary(sp_tk2)
 
 # From merMod
 # Onty tra
-\dontrun{
+\donttest{
   if(require(lme4)){
     lmer3 <- with(SPET,
                   lmer(y ~ blk + (1|blk:tra) + tra*year,

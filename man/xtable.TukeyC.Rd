@@ -11,7 +11,7 @@
 
 \usage{
 
-\method{xtable}{TukeyC}(x, ...)
+  \method{xtable}{TukeyC}(x, ...)
 
 }
 
@@ -20,18 +20,23 @@
   \item{\dots}{Further arguments (require by xtable::xtable).}
 }
 
+\value{
+  For most \code{xtable} methods, an object of class "xtable.TukeyC", "xtable" which inherits the data.frame class and contains several additional attributes specifying the table formatting options.
+}
+
 \author{
   Jose Claudio Faria (\email{joseclaudio.faria@gmail.com})\cr  
   Enio G. Jelihovschi (\email{eniojelihovs@gmail.com})\cr
   Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})\cr
 }
 
-\seealso{\code{\link{xtable}}
+\seealso{
+ \code{\link[xtable:xtable]{xtable}}
 }
 
 \examples{
 data(RCBD) 
-\dontrun{
+\donttest{
   if(require(xtable)){
     lm1 <- with(RCBD,
                   lm(y ~ blk + tra,

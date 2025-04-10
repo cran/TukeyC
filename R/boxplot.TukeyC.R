@@ -177,6 +177,7 @@ boxplot.TukeyC <- function(x,
   }       
 
   if(ngroups > 3){
-    par(mar=op)  # Restoring the original par('mar') 
+    #par(mar=op)  # Restoring the original par('mar') 
+	on.exit(par(mar=np))
   }
 }

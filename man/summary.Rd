@@ -20,6 +20,10 @@
   \item{\dots}{Potential further arguments (required by generic).}
 }
 
+\value{
+ A \code{matrix} if complete argument iqual \code{TRUE} or \code{data.frame} if complete argument iqual \code{FALSE}. 
+}
+
 \author{
   Jose Claudio Faria (\email{joseclaudio.faria@gmail.com})\cr
   Enio Jelihovschi (\email{eniojelihovs@gmail.com})\cr

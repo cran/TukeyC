@@ -46,9 +46,9 @@ plot.TukeyC <- function(x,
   if(replicates)
     r <- x$out$Replicates
 
-  groups <- 1:length(means)
+    groups <- 1:length(means)
 
-  m.res <- t(x$out$Result[, 2:ncol(x$out$Result)])
+    m.res <- t(x$out$Result[, 2:ncol(x$out$Result)])
 
   if(dim(m.res)[1] != 1) {
     m.res <- apply(m.res, 2, fun)
@@ -166,9 +166,10 @@ plot.TukeyC <- function(x,
                     1))
   }
 
-  if(is.null(id.lab))
+  if(is.null(id.lab)){
     #id.lab <- names(x$out$Result[,1])
     id.lab <- row.names(x$out$Result)
+  }  
 
   if(axisx){
     axis(1,
@@ -176,29 +177,33 @@ plot.TukeyC <- function(x,
          labels   = id.lab,
          las      = id.las,
          col.axis = FALSE, ...) 
-  }   
-
-  if(result) 
-    axis(3,
-         at     = 1:length(means),
-         labels = id.groups, ...)
-
-  if(replicates)
-    text(x      = 1:length(means),
-         y      = min(ylim),
-         labels = r,
-         pos    = 3, ...)
-
-  mtext(text = id.lab,
+         
+    mtext(text = id.lab,
         side = 1,
         line = 1,
         at   = 1:length(means),
         las  = id.las, ...)
+      
+  }   
+
+  if(result){ 
+    axis(3,
+         at     = 1:length(means),
+         labels = id.groups, ...)
+  }       
+
+  if(replicates){
+    text(x      = 1:length(means),
+         y      = min(ylim),
+         labels = r,
+         pos    = 3, ...)
+  }
 
   title(title, ...)
 
   # By J.C.Faria
   if(ngroups > 3){
-    par(mar=op)  # Restoring the original par('mar')
+    #par(mar=op)  # Restoring the original par('mar')
+	on.exit(par(mar=np))
   }
 }

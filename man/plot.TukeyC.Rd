@@ -56,6 +56,10 @@
   \item{\dots}{Optional plotting parameters.}
 }
 
+\value{
+ `NULL` (invisibly). The main purpose of this function is to produce a plot.
+}
+
 \details{
   The \code{plot.TukeyC} function is a S3 method to plot \samp{Tukey} and
   \code{TukeyC.nest} objetcs. It generates a serie of points (the means) and a 
