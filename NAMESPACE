@@ -8,7 +8,7 @@ export(cv)
 export(xtable.TukeyC)
 
 # Import all packages listed as Imports or Depends
-importFrom(doBy, LSmeans)
+importFrom(emmeans, emmeans)
 #importFrom(xtable, print.xtable)
 importFrom(xtable, xtable)
 import(

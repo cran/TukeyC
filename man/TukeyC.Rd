@@ -95,9 +95,9 @@ TukeyC(x,...)
 }
 
 \author{
-  Jose Claudio Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Enio Jelihovschi (\email{eniojelihovs@gmail.com})\cr
-  Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
+  José C. Faria (\email{joseclaudio.faria@gmail.com})\cr
+  Enio G. Jelihovschi (\email{eniojelihovs@gmail.com})\cr
+  Ivan B. Allaman (\email{ivanalaman@gmail.com})
 }
 
 \references{
