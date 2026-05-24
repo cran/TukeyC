@@ -26,7 +26,7 @@
      yl             = TRUE,
      yl.lty         = 3,
      yl.col         = 'gray',
-     dispersion     = c('none','mm','sd','ci','cip'),
+     dispersion     = c('mm','sd','ci','cip'),
      d.lty          = 1,
      d.col          = 'black',
      title          = '', \dots)
@@ -49,7 +49,7 @@
   \item{yl}{Horizontal (reference) line connecting the circle to the \samp{y} axis.}
   \item{yl.lty}{Line type of \samp{yl}.}
   \item{yl.col}{Line color of \samp{yl}.}
-  \item{dispersion}{Vertical line through the circle (mean value) linking the minimum to the maximum of the factor level values corresponding to that mean value. Other options are: sd (standard deviation), ci (confidence interval), cip (pooled confidence interval) and none.}
+  \item{dispersion}{Type of dispersion bar drawn through each mean point. Options: \samp{mm} (min-max range), \samp{sd} (standard deviation), \samp{ci} (individual confidence interval), \samp{cip} (pooled confidence interval). Default is \samp{mm}.}
   \item{d.lty}{Line type of dispersion.}
   \item{d.col}{A vector of colors for the line type of dispersion.}
   \item{title}{A title for the plot.}
@@ -61,16 +61,16 @@
 }
 
 \details{
-  The \code{plot.TukeyC} function is a S3 method to plot \samp{Tukey} and
-  \code{TukeyC.nest} objetcs. It generates a serie of points (the means) and a 
+  The \code{plot.TukeyC} function is an S3 method to plot \code{TukeyC} and
+  \code{TukeyC.nest} objects. It generates a series of points (the means) and a 
   vertical line showing the dispersion of the values corresponding to
-  each group mean. The ci options is calculed utilizing each treatment variance as estimating of population variance. The cip options is calculed utilizing the means square error (MSE) as estimating of population variance.
+  each group mean. With \code{dispersion = "ci"}, intervals use each treatment variance as an estimate of the population variance. With \code{dispersion = "cip"}, intervals use the mean square error (MSE).
 }
 
 \author{
-  José C. Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Enio G. Jelihovschi (\email{eniojelihovs@gmail.com})\cr
-  Ivan B. Allaman (\email{ivanalaman@gmail.com})
+  Faria, J. C. (\email{joseclaudio.faria@gmail.com})\cr
+  Jelihovschi, E. G. (\email{eniojelihovs@gmail.com})\cr
+  Allaman, I. B. (\email{ivanalaman@gmail.com})
 }
 
 \references{
@@ -102,7 +102,7 @@ plot(tk1,
 
 plot(tk1,
      yl=FALSE,
-     disp='sd',
+     dispersion='sd',
      id.las=2)
 
 ## From: aov
@@ -114,7 +114,7 @@ summary(av)
 tk2 <- TukeyC(x=av,
               which='x')
 plot(tk2,
-     disp='sd',
+     dispersion='sd',
      yl=FALSE,
      id.las=2)
 
@@ -128,12 +128,12 @@ tk3 <- TukeyC(x=av_lm,
 
 par(mfrow=c(2, 1))
 plot(tk3,
-     disp='ci',
+     dispersion='ci',
      id.las=2,
      yl=FALSE)
 
 plot(tk3,
-     disp='cip',
+     dispersion='cip',
      id.las=2,
      yl=FALSE)
 

@@ -21,13 +21,13 @@
 }
 
 \value{
- A \code{matrix} if complete argument iqual \code{TRUE} or \code{data.frame} if complete argument iqual \code{FALSE}. 
+ A \code{matrix} if \code{complete} is \code{TRUE}, or a \code{data.frame} if \code{complete} is \code{FALSE}. 
 }
 
 \author{
-  José C. Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Enio G. Jelihovschi (\email{eniojelihovs@gmail.com})\cr
-  Ivan B. Allaman (\email{ivanalaman@gmail.com})
+  Faria, J. C. (\email{joseclaudio.faria@gmail.com})\cr
+  Jelihovschi, E. G. (\email{eniojelihovs@gmail.com})\cr
+  Allaman, I. B. (\email{ivanalaman@gmail.com})
 }
 
 \references{
@@ -150,7 +150,7 @@
   data(SPE)
   ## From: formula
   ## Main factor: P
-  ## It is necessary to inform the appropriate error for the test
+  ## Specify the appropriate error term
   tk1 <- with(SPE,
               TukeyC(y ~ blk + P*SP + Error(blk/P),
                      data=dfm,
@@ -168,7 +168,7 @@
 
   ## From: formula
   ## Main factor: P
-  ## It is necessary to inform the appropriate error for the test
+  ## Specify the appropriate error term
   data(SSPE) 
 
   tk1 <- with(SSPE,
@@ -179,7 +179,7 @@
   summary(tk1)
 
   ## Main factor: SP
-  ## It is necessary to inform the appropriate error for the test
+  ## Specify the appropriate error term
   tk2 <- with(SSPE,
               TukeyC(y ~ blk + P*SP*SSP + Error(blk/P/SP),
                      data=dfm,
@@ -222,7 +222,7 @@
                  fl2=1)
   summary(tkn3)
 
-  ## Nested: SSP2/P1/SP - it is necessary to inform how to combinate the errors
+  ## Nested: SSP2/P1/SP - specify how to combine error terms
   tkn4 <- TukeyC(av,
                  which='SSP:P:SP',
                  fl1=2,

@@ -4,7 +4,7 @@
 
 ## The parameters can be: formula, aov, lm or lmer.
 
-## Example 1: an small experiment
+## Example 1: a small experiment
 library(TukeyC)
 data(CRD1)
 
@@ -18,14 +18,18 @@ summary(tk1)
 plot(tk1)
 
 plot(tk1,
-     di='mm',
+     dispersion='mm',
      d.lty=3)
 
 plot(tk1,
-     di='sd')
+     dispersion='sd')
 
 plot(tk1,
-     di='ci',
+     dispersion='ci',
+     d.col='red')
+
+plot(tk1,
+     dispersion='cip',
      d.col='red')
 
 ## From: formula - unbalanced
@@ -65,7 +69,7 @@ tk3 <- with(CRD2,
 plot(tk3,
      id.las=2,
      yl=FALSE,
-     di='sd',
+     dispersion='sd',
      d.lty=3,
      d.col='red')
 
@@ -76,7 +80,7 @@ u_tk3 <- with(CRD2,
 plot(u_tk3,
      id.las=2,
      yl=FALSE,
-     di='sd',
+     dispersion='sd',
      d.lty=3,
      d.col='red')
 
@@ -90,7 +94,7 @@ tk4 <- TukeyC(av2)
 plot(tk4,
      id.las=2,
      yl=FALSE,
-     di='sd',
+     dispersion='sd',
      d.lty=4,
      d.col='darkgreen')
 

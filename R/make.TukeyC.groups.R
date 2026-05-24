@@ -1,68 +1,113 @@
 ##
 ## Function to group means
 ##
-make.TukeyC.groups <- function(x)
-{
-  ##++++++++ 
-  # O procedimento abaixo é para eliminar colunas iguais, pois não há sentido termos:
-  # t1  a  b
-  # t2  a  b
-  # é tudo a
-  x[upper.tri(x)] <- FALSE
-  auxx <- t(x)
-  auxy <- unique(auxx)
-  newmat <- t(auxy)
-  ##++++++++
+make.TukeyC.groups <- function(x) {
+  # x: symmetric logical matrix; FALSE = not significantly different,
+  # TRUE = significantly different (rows/columns sorted by decreasing mean)
 
-  ncolnew <- ncol(newmat)
-  nrownew <- nrow(newmat)
+  traits <- rownames(x)
+  n_traits <- length(traits)
 
-  ##+++++++++
-  # Este procedimento é para marcar a partir de qual linha deve ser colocado as letras
-  mat24 <- sapply(colnames(newmat),function(x)x==rownames(newmat))
-  mat25 <- which(mat24 == TRUE, arr.ind = TRUE)
-  ##+++++++++
-
-  ##+++++++++
-  # Criando a matrix indicadora das letras
-  matzero <- matrix(NA,nrow=nrownew,ncol=ncolnew)
-  for(i in 1:dim(mat25)[1]) {
-    matzero[seq(mat25[i,1],nrownew),i] <- newmat[seq(mat25[i,1],nrownew),i]  
+  if (n_traits == 0L) {
+    return(matrix(
+      character(),
+      nrow = 0L,
+      ncol = 0L
+    ))
   }
-  ##+++++++++
 
-  ##+++++++++
-  # Este procedimento é para obter as colunas que de fato serão colocado as letras
-  aux <- apply(matzero,2,function(x)all(x==FALSE,na.rm=TRUE))
-  aux3 <- matzero[,1:(length(aux[aux==FALSE])+1)]
-  ##+++++++++
+  established_groups <- list()
 
-  ##+++++++++
-  # Quando o pesquisador usa diretamento o teste de Tukey (sem ANOVA prévia), pode acontecer dos tratamentos serem iguais. O procedimento abaixo é uma proteção da função caso isso ocorra.
-  ifelse(!is.vector(aux3),
-         matreal <- apply(aux3,2,function(x)gsub(TRUE,'',x)),
-         matreal <- matzero)
+  for (i in seq_len(n_traits)) {
+    candidate <- which(!x[i, ])
 
-  matreal[is.na(matreal)] <- ''
+    if (length(candidate) > 2L) {
+      validated <- candidate[1L]
+      for (j in 2:length(candidate)) {
+        potential_member <- candidate[j]
+        if (all(!x[potential_member, validated])) {
+          validated <- c(
+            validated,
+            potential_member
+          )
+        }
+      }
+      candidate <- validated
+    }
 
-  ##+++++++++
-  # Criando um vetor de letras. Com as letras atuais do R, só é possível termos 52 letras entre minúsculas e maiúsculas. Ou seja, se todos os tratamentos fossem diferentes entre si, só seria possível  diferenciamos 52 tratamentos. Colocando caracteres como acentos entre outros, conseguiremos expandir o número de comparações.
-  letras <- c(letters, paste(letters,rep(0:9,rep(26,10)),sep=''))
-  ##+++++++++
+    established_groups[[length(established_groups) + 1L]] <- candidate
+  }
 
-  ##++++++++++
-  # Detecando o número de núcleos da máquina
-  #ifelse(Sys.info()['sysname']=='Windows', ncore <- 1,
-  #ncore <- parallel::detectCores())
-  #Devido a complicações na compilação do pacote devido as políticas do CRAN, resolvi retirar esta parte!
-  #++++++++++
+  established_groups <- established_groups[
+    order(
+      vapply(
+        established_groups,
+        length,
+        0L
+      ),
+      decreasing = TRUE
+    )
+  ]
 
-  ##+++++++++
-  # Começando a brincadeira de fato
-  #matnew <- parallel::mclapply(1:dim(matreal)[2],
-  #                 function(i)gsub(FALSE,letras[i],matreal[,i]),mc.cores=ncore)
+  unique_groups <- list()
+  for (i in seq_along(established_groups)) {
+    current_g <- established_groups[[i]]
+    if (length(unique_groups) > 0L) {
+      is_subset <- vapply(
+        unique_groups,
+        function(saved_g) {
+          all(current_g %in% saved_g)
+        },
+        logical(1L)
+      )
+      if (any(is_subset)) {
+        next
+      }
+    }
+    unique_groups[[length(unique_groups) + 1L]] <- current_g
+  }
 
-  matnew <- lapply(1:dim(matreal)[2],
-                   function(i)gsub(FALSE,letras[i],matreal[,i]))
-  matnew1 <- do.call('cbind',matnew)
+  first_appearance <- vapply(
+    unique_groups,
+    min,
+    0L
+  )
+  unique_groups <- unique_groups[order(first_appearance)]
+
+  n_groups <- length(unique_groups)
+  group_matrix <- matrix(
+    "",
+    nrow = n_traits,
+    ncol = n_groups
+  )
+  rownames(group_matrix) <- traits
+  colnames(group_matrix) <- paste0(
+    "G",
+    seq_len(n_groups)
+  )
+
+  alphabet <- c(
+    letters,
+    LETTERS,
+    do.call(
+      paste0,
+      expand.grid(
+        letters,
+        letters
+      )
+    ),
+    do.call(
+      paste0,
+      expand.grid(
+        LETTERS,
+        LETTERS
+      )
+    )
+  )
+
+  for (g in seq_len(n_groups)) {
+    group_matrix[unique_groups[[g]], g] <- alphabet[g]
+  }
+
+  return(group_matrix)
 }

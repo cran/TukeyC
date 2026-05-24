@@ -6,40 +6,43 @@
 }
 
 \description{
-  Builds groups of means, according to the method of Tukey.
+  Builds compact letter groups from the full pairwise significance matrix
+  produced by the Tukey test.
 }
 
 \usage{
-  make.TukeyC.groups(x)
+make.TukeyC.groups(x)
 }
 
 \arguments{
-  \item{x}{A square matrix where the lines and colums are all levels of the
-    factor being test sorted in decresing order. The matrix content are
-    \code{TRUE} or \code{FALSE}, i.e, indicating whether or not equality
-    between the levels of factor.}
+  \item{x}{A square logical matrix whose rows and columns are factor levels
+    sorted in decreasing order of the means. \code{FALSE} indicates that the
+    pair is \emph{not} significantly different; \code{TRUE} indicates a
+    significant difference.}
 }
 
 \details{
-  This function is an algorithm used to build up the groups of means, 
-  allowing for overlapping.
+  The algorithm scans each treatment, forms candidate groups of non-significant
+  comparisons, enforces internal consistency when pairwise patterns are
+  non-transitive (as in severely unbalanced designs), removes redundant
+  subsets, and writes the familiar column-wise letter display (\code{G1},
+  \code{G2}, \ldots).
 }
 
 \value{
-  The object returned by this function is a character matrix and the
-  rownames are the levels of the factor being tested sorted in decreasing
-  order. The matrix has the same number of columns as the number of groups
-  generated.
+  A character matrix with row names equal to the treatment levels (sorted by
+  decreasing mean) and one column per letter group (\code{G1}, \code{G2},
+  \ldots). Empty cells indicate that the treatment does not carry that letter.
 }
 
 \note{
-  This function is mainly for internal use in the TukeyC package.
+  This function is for internal use in the \pkg{TukeyC} package.
 }
 
 \author{
-  José C. Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Enio G. Jelihovschi (\email{eniojelihovs@gmail.com})\cr
-  Ivan B. Allaman (\email{ivanalaman@gmail.com})
+  Faria, J. C. (\email{joseclaudio.faria@gmail.com})\cr
+  Jelihovschi, E. G. (\email{eniojelihovs@gmail.com})\cr
+  Allaman, I. B. (\email{ivanalaman@gmail.com})
 }
 
-\keyword{package}
+\keyword{internal}
